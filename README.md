@@ -185,6 +185,31 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 ---
 
+## ⚙️ AI Processing Mode
+
+**Client-side AI with progressive fallback design**
+
+AI Care Assistant uses Chrome’s **Built-in AI Prompt API** (Gemini Nano) whenever available.  
+When the local Gemini Nano model is not accessible — for example, outside the Early Preview Program or on devices that have not yet rolled out the feature —  
+the system automatically switches to a **local Retrieval-Augmented Generator (RAG fallback)**.  
+
+This ensures that every user, regardless of device or network conditions, can still receive structured, context-aware caregiving guidance completely offline.  
+No data ever leaves the device — all processing, retrieval, and text generation happen locally inside the Chrome extension.  
+
+### Architecture summary
+| Mode | Source | Description |
+|------|---------|-------------|
+| 🧠 **Gemini Nano (Prompt API)** | Chrome Built-in AI | Generates full structured caregiving guidance using the on-device Gemini Nano model when available. |
+| 💾 **Local RAG Generator (Fallback)** | care_knowledge_en.md + rule-based composition | When the Prompt API is unavailable, retrieves relevant caregiving content from the embedded Markdown knowledge base and composes structured responses locally. |
+
+### Key advantages
+- 🔒 **Privacy-first:** No cloud calls, no data transmission.
+- 🌐 **Offline-ready:** Works even without internet access.
+- ⚙️ **Resilient design:** Graceful degradation when Gemini Nano is unavailable.
+- 💡 **Consistent UX:** Same structured, sectioned answer format across both modes.
+
+---
+
 ## 📹 Demo Video
 👉 *(To be added)*  
 Once ready, upload your demo (≤3 minutes) to **YouTube or Vimeo** and link it here:  
