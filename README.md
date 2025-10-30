@@ -101,6 +101,7 @@ Traditional AI assistants rely on cloud processing, raising privacy and connecti
 ---
 
 ## 🧩 Repository Structure
+```text
 📂 AI Care Assistant
 ├── manifest.json
 ├── popup.html
@@ -114,7 +115,7 @@ Traditional AI assistants rely on cloud processing, raising privacy and connecti
 │   ├── fall-prevention-4.png
 │   ├── fall-prevention-5.png
 └── README.md
-
+```
 ---
 
 ## 🧠 Future Improvements
