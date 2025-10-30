@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>AI Care Assistant</title>
+    <style>
+      /* 定义主题变量，支持深色模式 */
+      :root {
+        --bg:#f9fafb; 
+        --fg:#111827; 
+        --primary:#2563eb; 
+        --border:#e5e7eb; 
+        --hint:#eef2ff;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root { 
+          --bg:#1f2937; 
+          --fg:#f9fafb; 
+          --primary:#3b82f6; 
+          --border:#374151; 
+          --hint:#2d3748; 
+        }
+      }
+      /* 基础样式 */
+      body {
+        font-family:Inter,system-ui,sans-serif;
+        background:var(--bg);
+        color:var(--fg);
+        width:340px; /* Chrome 插件弹窗的标准宽度 */
+        margin:0;
+        padding:16px;
+      }
+      h2 {
+        margin:0 0 8px;
+        text-align:center;
+        color:var(--primary);
+      }
+      /* 主卡片容器 */
+      .card {
+        background:#fff;
+        border:1px solid var(--border);
+        border-radius:12px;
+        box-shadow:0 2px 8px rgba(0,0,0,.08);
+        padding:14px;
+        transition: background 0.3s;
+      }
+      /* 提示条 */
+      .hint {
+        background:var(--hint);
+        border-radius:8px;
+        padding:8px;
+        font-size:13px;
+        color:var(--primary);
+        text-align:center;
+        margin-bottom:10px;
+        transition: background 0.3s;
+      }
+      /* 示例问题按钮组 */
+      .suggest {
+        display:flex;
+        flex-wrap:wrap;
+        gap:6px;
+        justify-content:center;
+        margin-bottom:10px;
+      }
+      .suggest button {
+        background:#e0e7ff;
+        color:#1e40af;
+        border:0;
+        border-radius:8px;
+        padding:5px 8px;
+        font-size:12px;
+        cursor:pointer;
+        transition: background 0.2s, transform 0.1s;
+      }
+      .suggest button:hover {
+        background:#c7d2fe;
+      }
+      /* 输入框和下拉框布局 */
+      .row {
+        display:flex;
+        gap:8px;
+        margin:6px 0;
+      }
+      .row > * {
+        flex:1;
+      }
+      input, select {
+        width:100%;
+        padding:8px 10px;
+        border:1px solid var(--border);
+        border-radius:8px;
+        font-size:14px;
+        box-sizing:border-box;
+        transition: border-color 0.2s;
+      }
+      input:focus, select:focus {
+        border-color: var(--primary);
+        outline: none;
+      }
+      .controls {
+        display:flex;
+        gap:8px;
+      }
+      .controls select {
+        flex:1;
+      }
+      /* 主按钮 */
+      button.ask {
+        margin-top:8px;
+        width:100%;
+        padding:10px;
+        border:0;
+        border-radius:8px;
+        background:var(--primary);
+        color:#fff;
+        font-weight:600;
+        cursor:pointer;
+        transition: opacity 0.2s, background 0.2s;
+      }
+      button.ask:active {
+        opacity: 0.9;
+      }
+      /* 结果输出区 */
+      #output {
+        margin-top:12px;
+        padding:10px;
+        border-radius:8px;
+        background:#f3f4f6;
+        border:1px solid var(--border);
+        min-height:100px;
+        white-space:normal; /* 确保内容换行 */
+        line-height:1.5;
+        overflow-wrap: break-word; /* 保证长单词不溢出 */
+        transition: background 0.3s;
+      }
+      /* 底部提示 */
+      small {
+        display:block;
+        margin-top:8px;
+        color:#6b7280;
+        text-align:center;
+        font-size:11px;
+      }
+      /* 确保格式化后的内容顶部没有多余边距 */
+      .formatted-answer {
+        margin-top: 0;
+        padding-top: 0;
+      }
+      .formatted-answer > :first-child {
+        margin-top: 0 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>AI Care Assistant</h2>
+    <div class="card">
+      <div class="hint">💡 Try: nutrition, mobility, pressure-ulcer prevention, medication safety.</div>
+
+      <div class="suggest">
+        <button class="example">How to prevent pressure ulcers?</button>
+        <button class="example">What diet suits elderly diabetics?</button>
+        <button class="example">Home fall-prevention checklist?</button>
+      </div>
+
+      <div class="row">
+        <input id="userInput" placeholder="Type your question..." />
+      </div>
+
+      <div class="controls">
+        <select id="detail">
+          <option value="brief">Brief</option>
+          <option value="detailed">Detailed</option>
+        </select>
+        <select id="audience">
+          <option value="family" selected>Family caregiver</option>
+          <option value="professional">Professional caregiver</option>
+        </select>
+      </div>
+
+      <button id="askBtn" class="ask">Ask Assistant</button>
+      
+      <div id="output">Result will appear here</div>
+      
+      <small>Chrome Prompt API (Gemini Nano) when available • Local RAG generator fallback</small>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

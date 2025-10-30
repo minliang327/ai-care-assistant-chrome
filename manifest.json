@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "AI Care Assistant",
+  "version": "1.0.0",
+  "description": "Caregiver assistant using Chrome Prompt API (Gemini Nano) with fallback.",
+  "action": { "default_popup": "popup.html" },
+  "background": { "service_worker": "background.js" },
+  "permissions": [
+    "storage",
+    "scripting"
+  ],
+  "trial_tokens": [
+    "Ag/5AaLZrN+rSi2AK2v2394I/aTadxSIvolBUfRcS+2LhZmM5Eota9eNHP/pbZDQs8aYjjGJT9h5cd612vJDNAwAAAB7eyJvcmlnaW4iOiJjaHJvbWUtZXh0ZW5zaW9uOi8vY2xlb2FiY2lwbWJhbWNwYW5tZ3BramZpZGllZGFjb2UiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDB9"
+  ]
+}
