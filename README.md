@@ -211,9 +211,7 @@ No data ever leaves the device — all processing, retrieval, and text generatio
 ---
 
 ## 📹 Demo Video
-👉 *(To be added)*  
-Once ready, upload your demo (≤3 minutes) to **YouTube or Vimeo** and link it here:  
-`https://youtu.be/your-demo-link`
+YouTube：AI_Care_Assistant_Demo.mp4 (https://youtu.be/e14RHpIFoio)
 
 ---
 
